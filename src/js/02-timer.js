@@ -32,7 +32,7 @@ const options = {
     clearInterval(timerId);
     isActiveTimer = false;
     refs.startBtn.setAttribute('disabled', '');
-    refs.timerValues.forEach(elemnt => (elemnt.textContent = '00'));
+    refs.timerValues.forEach(el => (el.textContent = '00'));
   },
 };
 
