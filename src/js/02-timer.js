@@ -52,8 +52,7 @@ const convertMs = ms => {
 
 const loadTimer = () => {
   isActiveTimer = true;
-  const currentTime = targetDate - new Date();
-  const timer = convertMs(currentTime);
+  const timer = convertMs(targetDate - new Date());
   Object.entries(timer).forEach(([key, value], index) => {
     refs.timerValues[index].textContent = String(value).padStart(2, 0);
   });
