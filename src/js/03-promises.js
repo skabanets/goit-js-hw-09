@@ -34,7 +34,7 @@ const onFormSubmit = e => {
 
   let { delay, step, amount } = data;
 
-  for (i = 1; i <= amount; i++) {
+  for (let i = 1; i <= amount; i++) {
     const promis = createPromise(i, delay);
 
     promis
