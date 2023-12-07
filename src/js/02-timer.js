@@ -5,11 +5,11 @@ import Notiflix from 'notiflix';
 const refs = {
   startBtn: document.querySelector('[data-start]'),
   timerValues: document.querySelectorAll('.value'),
+  inputTime: document.querySelector('#datetime-picker'),
 };
 
 let targetDate = null;
 let timerId = null;
-let isActiveTimer = false;
 
 const options = {
   enableTime: true,
@@ -26,13 +26,6 @@ const options = {
 
     refs.startBtn.removeAttribute('disabled');
     targetDate = selectedDates[0];
-  },
-
-  onChange() {
-    clearInterval(timerId);
-    isActiveTimer = false;
-    refs.startBtn.setAttribute('disabled', '');
-    refs.timerValues.forEach(el => (el.textContent = '00'));
   },
 };
 
@@ -51,15 +44,22 @@ const convertMs = ms => {
 };
 
 const loadTimer = () => {
-  isActiveTimer = true;
-  const timer = convertMs(targetDate - new Date());
+  const timeCounter = targetDate - new Date();
+  const timer = convertMs(timeCounter);
   Object.entries(timer).forEach(([key, value], index) => {
     refs.timerValues[index].textContent = String(value).padStart(2, 0);
   });
+
+  if (timeCounter <= 1000) clearInterval(timerId);
+};
+
+const disableElement = elem => {
+  elem.setAttribute('disabled', '');
 };
 
 const onStartTimerClick = () => {
-  if (isActiveTimer) return;
+  disableElement(refs.startBtn);
+  disabldElement(refs.inputTime);
   timerId = setInterval(loadTimer, 1000);
 };
 
