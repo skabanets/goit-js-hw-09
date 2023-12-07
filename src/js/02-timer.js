@@ -59,7 +59,7 @@ const disableElement = elem => {
 
 const onStartTimerClick = () => {
   disableElement(refs.startBtn);
-  disabldElement(refs.inputTime);
+  disableElement(refs.inputTime);
   timerId = setInterval(loadTimer, 1000);
 };
 
