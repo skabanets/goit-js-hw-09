@@ -17,11 +17,13 @@ const changeBackgroundColor = () => {
 
 const onButtonStartClick = () => {
   refs.btnStart.setAttribute('disabled', '');
+  refs.btnStop.removeAttribute('disabled');
   timerId = setInterval(changeBackgroundColor, 1000);
 };
 
 const onButtonStopClick = () => {
   refs.btnStart.removeAttribute('disabled');
+  refs.btnStop.setAttribute('disabled', '');
   clearInterval(timerId);
 };
 
